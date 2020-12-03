@@ -1,7 +1,7 @@
 package com.sorveteria.model;
 
 public class ClientModel {
-    
+
     private int id;
     private String document;
     private String name;

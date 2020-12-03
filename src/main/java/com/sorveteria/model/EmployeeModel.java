@@ -7,6 +7,7 @@ public class EmployeeModel {
     private String name;
     private int storeId;
     private float kickback;
+    //TODO Add CARGO property
 
     public int getId() {
         return this.id;
