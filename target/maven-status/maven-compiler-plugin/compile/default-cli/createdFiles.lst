@@ -1,0 +1,11 @@
+com\sorveteria\model\ClientModel.class
+com\sorveteria\model\EmployeeModel.class
+com\sorveteria\servlets\EmployeeServlet.class
+com\sorveteria\servlets\StoreServlet.class
+com\sorveteria\model\StoreModel.class
+com\sorveteria\servlets\ClientServlet.class
+com\sorveteria\servlets\OrderServlet.class
+com\sorveteria\model\OrderModel.class
+com\sorveteria\servlets\IceCreamServlet.class
+com\sorveteria\model\OrderItemModel.class
+com\sorveteria\model\IceCreamModel.class
