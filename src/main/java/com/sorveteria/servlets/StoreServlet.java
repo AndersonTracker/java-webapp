@@ -2,6 +2,7 @@ package com.sorveteria.servlets;
 
 import java.util.List;
 
+import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -11,6 +12,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sorveteria.dao.StoreDAO;
 import com.sorveteria.model.StoreModel;
 
@@ -32,19 +34,30 @@ public class StoreServlet implements DefaultServlet<StoreModel> {
     }
 
     @POST
-    public void doPost() {
-        // TODO Auto-generated method stub
-        StoreModel store = new StoreModel();
-        new StoreDAO().insert(store);
+    @Consumes(MediaType.APPLICATION_JSON)
+    public void doPost(String body) {
+		ObjectMapper objectMapper = new ObjectMapper();
+        try {
+            StoreModel client = objectMapper.readValue(body, StoreModel.class);
+            new StoreDAO().insert(client);
+        } catch (Exception e) {
+            //TODO tratar exception e retornar mensagem de erro 
+            e.printStackTrace();
+        }
     }
 
     @PUT
     @Path("/{id}")
-    public void doPut(@PathParam("id") int id) {
-        //TODO create StoreModel from JSON
-        StoreModel store = new StoreModel();
-
-        new StoreDAO().update(store);
+    @Consumes(MediaType.APPLICATION_JSON)
+    public void doPut(@PathParam("id") int id, String body) {
+		ObjectMapper objectMapper = new ObjectMapper();
+        try {
+            StoreModel client = objectMapper.readValue(body, StoreModel.class);
+            new StoreDAO().update(client);
+        } catch (Exception e) {
+            //TODO tratar exception e retornar mensagem de erro 
+            e.printStackTrace();
+        }
 
     }
 

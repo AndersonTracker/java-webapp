@@ -2,6 +2,7 @@ package com.sorveteria.servlets;
 
 import java.util.List;
 
+import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -11,6 +12,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sorveteria.dao.ClientDAO;
 import com.sorveteria.model.ClientModel;
 
@@ -21,30 +23,39 @@ public class ClientServlet implements DefaultServlet<ClientModel> {
     @Path("/{id}")
     @Produces({MediaType.APPLICATION_JSON})
     public ClientModel doGet(@PathParam("id") int id) {
-        // TODO Auto-generated method stub
         return new ClientDAO().select(id);
     }
 
     @GET
     public List<ClientModel> doGetAll() {
-        // TODO Auto-generated method stub
         return new ClientDAO().select();
     }
 
     @POST
-    public void doPost() {
-        // TODO Auto-generated method stub
-        ClientModel client = new ClientModel();
-        new ClientDAO().insert(client);
+    @Consumes(MediaType.APPLICATION_JSON)
+    public void doPost(String body) {
+		ObjectMapper objectMapper = new ObjectMapper();
+        try {
+            ClientModel client = objectMapper.readValue(body, ClientModel.class);
+            new ClientDAO().insert(client);
+        } catch (Exception e) {
+            //TODO tratar exception e retornar mensagem de erro 
+            e.printStackTrace();
+        }
     }
 
     @PUT
     @Path("/{id}")
-    public void doPut(@PathParam("id") int id) {
-        //TODO create ClientModel from JSON
-        ClientModel client = new ClientModel();
-
-        new ClientDAO().update(client);
+    @Consumes(MediaType.APPLICATION_JSON)
+    public void doPut(@PathParam("id") int id, String body) {
+		ObjectMapper objectMapper = new ObjectMapper();
+        try {
+            ClientModel client = objectMapper.readValue(body, ClientModel.class);
+            new ClientDAO().update(client);
+        } catch (Exception e) {
+            //TODO tratar exception e retornar mensagem de erro 
+            e.printStackTrace();
+        }
 
     }
 

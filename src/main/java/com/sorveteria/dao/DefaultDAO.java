@@ -34,7 +34,7 @@ public abstract class DefaultDAO<T> {
         DatabaseConnection dbConnection = new DatabaseConnection();
         try {
             Statement statement = (Statement) dbConnection.getDbconnection().createStatement();
-            ResultSet resultSet = statement.executeQuery(buildSelectAllQuery());
+            ResultSet resultSet = statement.executeQuery(buildSelectQuery(id));
             obj = buildResultObject(resultSet);
         } catch (Exception e) {
             // TODO: handle exception

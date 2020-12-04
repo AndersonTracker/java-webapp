@@ -2,6 +2,7 @@ package com.sorveteria.servlets;
 
 import java.util.List;
 
+import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -11,6 +12,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sorveteria.dao.EmployeeDAO;
 import com.sorveteria.model.EmployeeModel;
 
@@ -32,19 +34,30 @@ public class EmployeeServlet implements DefaultServlet<EmployeeModel> {
     }
 
     @POST
-    public void doPost() {
-        // TODO Auto-generated method stub
-        EmployeeModel employee = new EmployeeModel();
-        new EmployeeDAO().insert(employee);
+    @Consumes(MediaType.APPLICATION_JSON)
+    public void doPost(String body) {
+		ObjectMapper objectMapper = new ObjectMapper();
+        try {
+            EmployeeModel client = objectMapper.readValue(body, EmployeeModel.class);
+            new EmployeeDAO().insert(client);
+        } catch (Exception e) {
+            //TODO tratar exception e retornar mensagem de erro 
+            e.printStackTrace();
+        }
     }
 
     @PUT
     @Path("/{id}")
-    public void doPut(@PathParam("id") int id) {
-        //TODO create EmployeeModel from JSON
-        EmployeeModel employee = new EmployeeModel();
-
-        new EmployeeDAO().update(employee);
+    @Consumes(MediaType.APPLICATION_JSON)
+    public void doPut(@PathParam("id") int id, String body) {
+		ObjectMapper objectMapper = new ObjectMapper();
+        try {
+            EmployeeModel client = objectMapper.readValue(body, EmployeeModel.class);
+            new EmployeeDAO().update(client);
+        } catch (Exception e) {
+            //TODO tratar exception e retornar mensagem de erro 
+            e.printStackTrace();
+        }
 
     }
 
