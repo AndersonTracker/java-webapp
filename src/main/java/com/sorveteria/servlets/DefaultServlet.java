@@ -1,8 +1,10 @@
 package com.sorveteria.servlets;
 
-public interface DefaultServlet {
-    void doGet(int id);
-    void doGetAll();
+import java.util.List;
+
+public interface DefaultServlet<T> {
+    T doGet(int id);
+    List<T> doGetAll();
 	void doPost();
 	void doPut(int id);
 	void doDelete(int id);

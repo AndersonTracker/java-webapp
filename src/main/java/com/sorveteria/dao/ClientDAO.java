@@ -21,6 +21,31 @@ public class ClientDAO extends DefaultDAO<ClientModel> {
     private static final String CLIENT_PHONE = "client_phone";
 
     @Override
+    public List<ClientModel> select() {
+        return super.select();
+    }
+
+    @Override
+    public ClientModel select(int id) {
+        return super.select(id);
+    }
+
+    @Override
+    public boolean insert(ClientModel obj) {
+        return super.insert(obj);
+    }
+
+    @Override
+    public boolean update(ClientModel obj) {
+        return super.update(obj);
+    }
+
+    @Override
+    public boolean delete(int id) {
+        return super.delete(id);
+    }
+
+    @Override
     public String buildSelectQuery(int id) {
         return String.format(SELECT_QUERY, id);
     }

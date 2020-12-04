@@ -11,47 +11,47 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import com.sorveteria.dao.ClientDAO;
-import com.sorveteria.model.ClientModel;
+import com.sorveteria.dao.OrderItemDAO;
+import com.sorveteria.model.OrderItemModel;
 
-@Path("/clients")
-public class ClientServlet implements DefaultServlet<ClientModel> {
+@Path("/orderItems")
+public class OrderItemServlet implements DefaultServlet<OrderItemModel> {
 
     @GET
     @Path("/{id}")
     @Produces({MediaType.APPLICATION_JSON})
-    public ClientModel doGet(@PathParam("id") int id) {
+    public OrderItemModel doGet(@PathParam("id") int id) {
         // TODO Auto-generated method stub
-        return new ClientDAO().select(id);
+        return new OrderItemDAO().select(id);
     }
 
     @GET
-    public List<ClientModel> doGetAll() {
+    public List<OrderItemModel> doGetAll() {
         // TODO Auto-generated method stub
-        return new ClientDAO().select();
+        return new OrderItemDAO().select();
     }
 
     @POST
     public void doPost() {
         // TODO Auto-generated method stub
-        ClientModel client = new ClientModel();
-        new ClientDAO().insert(client);
+        OrderItemModel orderItem = new OrderItemModel();
+        new OrderItemDAO().insert(orderItem);
     }
 
     @PUT
     @Path("/{id}")
     public void doPut(@PathParam("id") int id) {
-        //TODO create ClientModel from JSON
-        ClientModel client = new ClientModel();
+        //TODO create OrderItemModel from JSON
+        OrderItemModel orderItem = new OrderItemModel();
 
-        new ClientDAO().update(client);
+        new OrderItemDAO().update(orderItem);
 
     }
 
     @DELETE
     @Path("/{id}")
     public void doDelete(@PathParam("id") int id) {
-        new ClientDAO().delete(id);
+        new OrderItemDAO().delete(id);
     }
 
 }
