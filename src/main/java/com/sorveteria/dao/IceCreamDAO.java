@@ -9,10 +9,10 @@ import com.sorveteria.model.IceCreamModel;
 
 public class IceCreamDAO extends DefaultDAO<IceCreamModel> {
 
-    private static final String INSERT_QUERY = "INSERT INTO \"ice_cream\" VALUES(NULL,%s,%f);";
+    private static final String INSERT_QUERY = "INSERT INTO \"ice_cream\" VALUES(NULL,\"%s\",%s);";
     private static final String SELECT_QUERY = "SELECT * FROM \"ice_cream\" WHERE ice_cream_id = %d;";
     private static final String SELECT_ALL_QUERY = "SELECT * FROM \"ice_cream\";";
-    private static final String UPDATE_QUERY = "UPDATE \"ice_cream\" SET \"ice_cream_desc\" = \"%s\", \"ice_cream_price\" = %f WHERE ice_cream_id = %d;";
+    private static final String UPDATE_QUERY = "UPDATE \"ice_cream\" SET \"ice_cream_desc\" = \"%s\", \"ice_cream_price\" = %s WHERE ice_cream_id = %d;";
     private static final String DELETE_QUERY = "DELETE FROM \"ice_cream\" WHERE ice_cream_id = %d;";
 
     private static final String ICE_CREAM_ID = "ice_cream_id";
@@ -56,7 +56,7 @@ public class IceCreamDAO extends DefaultDAO<IceCreamModel> {
 
     @Override
     public String buildInsertQuery(IceCreamModel obj) {
-        return String.format(INSERT_QUERY, obj.getDesc(), obj.getPrice());
+        return String.format(INSERT_QUERY, obj.getDesc(), String.valueOf(obj.getPrice()).replace(',', '.'));
     }
 
     @Override

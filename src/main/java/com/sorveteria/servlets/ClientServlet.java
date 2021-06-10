@@ -1,5 +1,6 @@
 package com.sorveteria.servlets;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.ws.rs.Consumes;
@@ -14,6 +15,7 @@ import javax.ws.rs.core.MediaType;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sorveteria.dao.ClientDAO;
+import com.sorveteria.exception.DataNotFoundException;
 import com.sorveteria.model.ClientModel;
 
 @Path("/clients")
@@ -23,12 +25,20 @@ public class ClientServlet implements DefaultServlet<ClientModel> {
     @Path("/{id}")
     @Produces({MediaType.APPLICATION_JSON})
     public ClientModel doGet(@PathParam("id") int id) {
-        return new ClientDAO().select(id);
+        ClientModel client = new ClientDAO().select(id);
+        if(client == null) {
+            //throw new DataNotFoundException ("Can't find client with id " + id);
+        }
+        return client;
     }
 
     @GET
     public List<ClientModel> doGetAll() {
-        return new ClientDAO().select();
+        ArrayList<ClientModel> clients = (ArrayList<ClientModel>) new ClientDAO().select();
+        if (clients.isEmpty()) {
+            //throw new DataNotFoundException ("Can't find any client");
+        }
+        return clients;
     }
 
     @POST
@@ -44,8 +54,8 @@ public class ClientServlet implements DefaultServlet<ClientModel> {
         }
     }
 
-    @PUT
     @Path("/{id}")
+    @PUT
     @Consumes(MediaType.APPLICATION_JSON)
     public void doPut(@PathParam("id") int id, String body) {
 		ObjectMapper objectMapper = new ObjectMapper();

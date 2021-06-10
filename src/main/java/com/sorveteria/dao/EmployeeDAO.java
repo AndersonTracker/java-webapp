@@ -9,10 +9,10 @@ import com.sorveteria.model.EmployeeModel;
 
 public class EmployeeDAO extends DefaultDAO<EmployeeModel> {
 
-    private static final String INSERT_QUERY = "INSERT INTO \"employee\" VALUES(NULL,%d,%s,%d,%f);";
+    private static final String INSERT_QUERY = "INSERT INTO \"employee\" VALUES(NULL,\"%s\",\"%s\",%d,%s);";
     private static final String SELECT_QUERY = "SELECT * FROM \"employee\" WHERE employee_id = %d;";
     private static final String SELECT_ALL_QUERY = "SELECT * FROM \"employee\";";
-    private static final String UPDATE_QUERY = "UPDATE \"employee\" SET \"employee_document\" = \"%s\",\"employee_name\" = \"%s\",\"store_id\" = %d,\"kickback\" = %f WHERE employee_id = %d;";
+    private static final String UPDATE_QUERY = "UPDATE \"employee\" SET \"employee_document\" = \"%s\",\"employee_name\" = \"%s\",\"employee_store_id\" = %d,\"employee_kickback\" = %s WHERE employee_id = %d;";
     private static final String DELETE_QUERY = "DELETE FROM \"employee\" WHERE employee_id = %d;";
 
     private static final String EMPLOYEE_ID = "employee_id";
@@ -58,12 +58,12 @@ public class EmployeeDAO extends DefaultDAO<EmployeeModel> {
 
     @Override
     public String buildInsertQuery(EmployeeModel obj) {
-        return String.format(INSERT_QUERY, obj.getDocument(), obj.getName(), obj.getStoreId(),obj.getKickback());
+        return String.format(INSERT_QUERY, obj.getDocument(), obj.getName(), obj.getStoreId(),String.valueOf(obj.getKickback()).replace(',', '.'));
     }
 
     @Override
     public String buildUpdateQuery(EmployeeModel obj) {
-        return String.format(UPDATE_QUERY, obj.getDocument(), obj.getName(), obj.getStoreId(),obj.getKickback(), obj.getId());
+        return String.format(UPDATE_QUERY, obj.getDocument(), obj.getName(), obj.getStoreId(),String.valueOf(obj.getKickback()).replace(',', '.'), obj.getId());
     }
 
     @Override

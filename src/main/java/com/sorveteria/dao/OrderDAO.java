@@ -9,10 +9,10 @@ import com.sorveteria.model.OrderModel;
 
 public class OrderDAO extends DefaultDAO<OrderModel> {
 
-    private static final String INSERT_QUERY = "INSERT INTO \"order\" VALUES(NULL,%d,%f,%d);";
+    private static final String INSERT_QUERY = "INSERT INTO \"order\" VALUES(NULL,%d,%s,%d);";
     private static final String SELECT_QUERY = "SELECT * FROM \"order\" WHERE order_id = %d;";
     private static final String SELECT_ALL_QUERY = "SELECT * FROM \"order\";";
-    private static final String UPDATE_QUERY = "UPDATE \"order\" SET \"employee_id\" = %d,\"order_total_amount\" = %f,\"client_id\" = %d WHERE order_id = %d;";
+    private static final String UPDATE_QUERY = "UPDATE \"order\" SET \"employee_id\" = %d,\"order_total_amount\" = %s,\"client_id\" = %d WHERE order_id = %d;";
     private static final String DELETE_QUERY = "DELETE FROM \"order\" WHERE order_id = %d;";
 
     private static final String ORDER_ID = "order_id";
@@ -57,12 +57,12 @@ public class OrderDAO extends DefaultDAO<OrderModel> {
 
     @Override
     public String buildInsertQuery(OrderModel obj) {
-        return String.format(INSERT_QUERY, obj.getEmployeeId(), obj.getTotalAmount(), obj.getTotalAmount());
+        return String.format(INSERT_QUERY, obj.getEmployeeId(), String.valueOf(obj.getTotalAmount()).replace(',', '.'), obj.getClientId());
     }
     
     @Override
     public String buildUpdateQuery(OrderModel obj) {
-        return String.format(UPDATE_QUERY, obj.getEmployeeId(), obj.getTotalAmount(), obj.getTotalAmount(), obj.getId());
+        return String.format(UPDATE_QUERY, obj.getEmployeeId(), String.valueOf(obj.getTotalAmount()).replace(',', '.'), obj.getClientId(), obj.getId());
     }
 
     @Override

@@ -9,7 +9,7 @@ import com.sorveteria.model.StoreModel;
 
 public class StoreDAO extends DefaultDAO<StoreModel> {
 
-    private static final String INSERT_QUERY = "INSERT INTO \"store\" VALUES(NULL,%s,%s,%s);";
+    private static final String INSERT_QUERY = "INSERT INTO \"store\" VALUES(NULL,\"%s\",\"%s\",\"%s\");";
     private static final String SELECT_QUERY = "SELECT * FROM \"store\" WHERE store_id = %d;";
     private static final String SELECT_ALL_QUERY = "SELECT * FROM \"store\";";
     private static final String UPDATE_QUERY = "UPDATE \"store\" SET \"store_name\" = \"%s\", \"store_address\" = \"%s\", \"store_phone\" = \"%s\" WHERE store_id = %d;";

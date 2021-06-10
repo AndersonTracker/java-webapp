@@ -1,5 +1,6 @@
 package com.sorveteria.servlets;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.ws.rs.Consumes;
@@ -14,6 +15,7 @@ import javax.ws.rs.core.MediaType;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sorveteria.dao.IceCreamDAO;
+import com.sorveteria.exception.DataNotFoundException;
 import com.sorveteria.model.IceCreamModel;
 
 @Path("/ice-cream")
@@ -23,14 +25,21 @@ public class IceCreamServlet implements DefaultServlet<IceCreamModel> {
     @Path("/{id}")
     @Produces({MediaType.APPLICATION_JSON})
     public IceCreamModel doGet(@PathParam("id") int id) {
-        // TODO Auto-generated method stub
-        return new IceCreamDAO().select(id);
+        IceCreamModel iceCream = new IceCreamDAO().select(id);
+        if(iceCream == null) {
+            //throw new DataNotFoundException("Can't find client with id " + id);
+        }
+        return iceCream;
     }
 
     @GET
     public List<IceCreamModel> doGetAll() {
-        // TODO Auto-generated method stub
-        return new IceCreamDAO().select();
+        ArrayList<IceCreamModel> iceCreams = (ArrayList<IceCreamModel>) new IceCreamDAO().select();
+        if(iceCreams.isEmpty()){
+            //throw new DataNotFoundException("Can't find any ice cream");
+        }
+        return iceCreams;
+
     }
 
     @POST
@@ -38,22 +47,22 @@ public class IceCreamServlet implements DefaultServlet<IceCreamModel> {
     public void doPost(String body) {
 		ObjectMapper objectMapper = new ObjectMapper();
         try {
-            IceCreamModel client = objectMapper.readValue(body, IceCreamModel.class);
-            new IceCreamDAO().insert(client);
+            IceCreamModel iceCream = objectMapper.readValue(body, IceCreamModel.class);
+            new IceCreamDAO().insert(iceCream);
         } catch (Exception e) {
             //TODO tratar exception e retornar mensagem de erro 
             e.printStackTrace();
         }
     }
 
-    @PUT
     @Path("/{id}")
+    @PUT
     @Consumes(MediaType.APPLICATION_JSON)
     public void doPut(@PathParam("id") int id, String body) {
 		ObjectMapper objectMapper = new ObjectMapper();
         try {
-            IceCreamModel client = objectMapper.readValue(body, IceCreamModel.class);
-            new IceCreamDAO().update(client);
+            IceCreamModel iceCream = objectMapper.readValue(body, IceCreamModel.class);
+            new IceCreamDAO().update(iceCream);
         } catch (Exception e) {
             //TODO tratar exception e retornar mensagem de erro 
             e.printStackTrace();

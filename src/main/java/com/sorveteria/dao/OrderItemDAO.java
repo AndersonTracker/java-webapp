@@ -9,10 +9,10 @@ import com.sorveteria.model.OrderItemModel;
 
 public class OrderItemDAO extends DefaultDAO<OrderItemModel> {
 
-    private static final String INSERT_QUERY = "INSERT INTO \"order_item\" VALUES(NULL,%d,%d,%d,%f,%f);";
+    private static final String INSERT_QUERY = "INSERT INTO \"order_item\" VALUES(NULL,%d,%d,%d,%s,%s);";
     private static final String SELECT_QUERY = "SELECT * FROM \"order_item\" WHERE ord_item_id = %d;";
     private static final String SELECT_ALL_QUERY = "SELECT * FROM \"order_item\";";
-    private static final String UPDATE_QUERY = "UPDATE \"order_item\" SET \"order_id\" = %d, \"ice_cream_id\" = %d, \"item_quantity\" = %d, \"unity_amount\" = %f, \"total_amount\" = %f WHERE ord_item_id = %d;";
+    private static final String UPDATE_QUERY = "UPDATE \"order_item\" SET \"order_id\" = %d, \"ice_cream_id\" = %d, \"item_quantity\" = %d, \"unity_amount\" = %s, \"total_amount\" = %s WHERE ord_item_id = %d;";
     private static final String DELETE_QUERY = "DELETE FROM \"order_item\" WHERE ord_item_id = %d;";
 
     private static final String ORDER_ITEM_ID = "ord_item_id";
@@ -60,7 +60,7 @@ public class OrderItemDAO extends DefaultDAO<OrderItemModel> {
     @Override
     public String buildInsertQuery(OrderItemModel obj) {
         //VALUES(NULL,order_id,ice_cream_id,item_quantity,unity_amount,total_amount)
-        return String.format(INSERT_QUERY, obj.getOrderId(), obj.getIceCreamId(), obj.getItemQuantity(), obj.getUnityAmount(), obj.getTotalAmount());
+        return String.format(INSERT_QUERY, obj.getOrderId(), obj.getIceCreamId(), obj.getItemQuantity(), String.valueOf(obj.getUnityAmount()).replace(',', '.'), String.valueOf(obj.getTotalAmount()).replace(',', '.'));
     }
 
     @Override

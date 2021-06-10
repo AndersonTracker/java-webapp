@@ -1,5 +1,6 @@
 package com.sorveteria.servlets;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.ws.rs.Consumes;
@@ -14,6 +15,7 @@ import javax.ws.rs.core.MediaType;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sorveteria.dao.OrderDAO;
+import com.sorveteria.exception.DataNotFoundException;
 import com.sorveteria.model.OrderModel;
 
 @Path("/orders")
@@ -23,14 +25,20 @@ public class OrderServlet implements DefaultServlet<OrderModel> {
     @Path("/{id}")
     @Produces({MediaType.APPLICATION_JSON})
     public OrderModel doGet(@PathParam("id") int id) {
-        // TODO Auto-generated method stub
-        return new OrderDAO().select(id);
+        OrderModel order = new OrderDAO().select(id);
+        if(order == null){
+            //throw new DataNotFoundException("Can't find Order with id " + id);
+        }
+        return order;
     }
 
     @GET
     public List<OrderModel> doGetAll() {
-        // TODO Auto-generated method stub
-        return new OrderDAO().select();
+       ArrayList<OrderModel> orders = (ArrayList<OrderModel>) new OrderDAO().select();
+       if(orders.isEmpty()) {
+            //throw new DataNotFoundException ("Can't find any orders");
+       }
+       return orders;
     }
 
     @POST
@@ -38,22 +46,22 @@ public class OrderServlet implements DefaultServlet<OrderModel> {
     public void doPost(String body) {
 		ObjectMapper objectMapper = new ObjectMapper();
         try {
-            OrderModel client = objectMapper.readValue(body, OrderModel.class);
-            new OrderDAO().insert(client);
+            OrderModel order = objectMapper.readValue(body, OrderModel.class);
+            new OrderDAO().insert(order);
         } catch (Exception e) {
             //TODO tratar exception e retornar mensagem de erro 
             e.printStackTrace();
         }
     }
 
-    @PUT
     @Path("/{id}")
+    @PUT
     @Consumes(MediaType.APPLICATION_JSON)
     public void doPut(@PathParam("id") int id, String body) {
 		ObjectMapper objectMapper = new ObjectMapper();
         try {
-            OrderModel client = objectMapper.readValue(body, OrderModel.class);
-            new OrderDAO().update(client);
+            OrderModel order = objectMapper.readValue(body, OrderModel.class);
+            new OrderDAO().update(order);
         } catch (Exception e) {
             //TODO tratar exception e retornar mensagem de erro 
             e.printStackTrace();

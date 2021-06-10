@@ -4,8 +4,8 @@ public class OrderModel {
     
     private int id;
     private int employeeId;
-    private float totalAmount;
     private int clientId;
+    private float totalAmount;
 
     public int getId() {
         return this.id;

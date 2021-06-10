@@ -9,7 +9,7 @@ import com.sorveteria.model.ClientModel;
 
 public class ClientDAO extends DefaultDAO<ClientModel> {
 
-    private static final String INSERT_QUERY = "INSERT INTO \"client\" VALUES(NULL,%s,%s,%s);";
+    private static final String INSERT_QUERY = "INSERT INTO \"client\" VALUES(NULL,\"%s\",\"%s\",\"%s\");";
     private static final String SELECT_QUERY = "SELECT * FROM \"client\" WHERE client_id = %d;";
     private static final String SELECT_ALL_QUERY = "SELECT * FROM \"client\";";
     private static final String UPDATE_QUERY = "UPDATE \"client\" SET \"client_document\" = \"%s\",\"client_name\" = \"%s\",\"client_phone\" = \"%s\" WHERE client_id = %d;";

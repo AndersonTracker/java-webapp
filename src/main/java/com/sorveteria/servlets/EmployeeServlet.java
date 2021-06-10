@@ -1,5 +1,6 @@
 package com.sorveteria.servlets;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.ws.rs.Consumes;
@@ -14,6 +15,7 @@ import javax.ws.rs.core.MediaType;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sorveteria.dao.EmployeeDAO;
+import com.sorveteria.exception.DataNotFoundException;
 import com.sorveteria.model.EmployeeModel;
 
 @Path("/employees")
@@ -23,14 +25,20 @@ public class EmployeeServlet implements DefaultServlet<EmployeeModel> {
     @Path("/{id}")
     @Produces({MediaType.APPLICATION_JSON})
     public EmployeeModel doGet(@PathParam("id") int id) {
-        // TODO Auto-generated method stub
-        return new EmployeeDAO().select(id);
+        EmployeeModel employee = new EmployeeDAO().select(id);
+        if(employee == null) {
+            //throw new DataNotFoundException ("Can't find client with id " + id);
+        }
+        return employee;
     }
 
     @GET
     public List<EmployeeModel> doGetAll() {
-        // TODO Auto-generated method stub
-        return new EmployeeDAO().select();
+        ArrayList<EmployeeModel> employees = (ArrayList<EmployeeModel>) new EmployeeDAO().select();
+        if (employees.isEmpty()) {
+            //throw new DataNotFoundException ("Can't find any client");
+        }
+        return employees;
     }
 
     @POST
@@ -38,22 +46,22 @@ public class EmployeeServlet implements DefaultServlet<EmployeeModel> {
     public void doPost(String body) {
 		ObjectMapper objectMapper = new ObjectMapper();
         try {
-            EmployeeModel client = objectMapper.readValue(body, EmployeeModel.class);
-            new EmployeeDAO().insert(client);
+            EmployeeModel employee = objectMapper.readValue(body, EmployeeModel.class);
+            new EmployeeDAO().insert(employee);
         } catch (Exception e) {
             //TODO tratar exception e retornar mensagem de erro 
             e.printStackTrace();
         }
     }
-
+    
     @PUT
     @Path("/{id}")
     @Consumes(MediaType.APPLICATION_JSON)
     public void doPut(@PathParam("id") int id, String body) {
 		ObjectMapper objectMapper = new ObjectMapper();
         try {
-            EmployeeModel client = objectMapper.readValue(body, EmployeeModel.class);
-            new EmployeeDAO().update(client);
+            EmployeeModel employee = objectMapper.readValue(body, EmployeeModel.class);
+            new EmployeeDAO().update(employee);
         } catch (Exception e) {
             //TODO tratar exception e retornar mensagem de erro 
             e.printStackTrace();
