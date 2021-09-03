@@ -9,16 +9,18 @@ import com.sorveteria.model.ClientModel;
 
 public class ClientDAO extends DefaultDAO<ClientModel> {
 
-    private static final String INSERT_QUERY = "INSERT INTO \"client\" VALUES(NULL,\"%s\",\"%s\",\"%s\");";
-    private static final String SELECT_QUERY = "SELECT * FROM \"client\" WHERE client_id = %d;";
-    private static final String SELECT_ALL_QUERY = "SELECT * FROM \"client\";";
-    private static final String UPDATE_QUERY = "UPDATE \"client\" SET \"client_document\" = \"%s\",\"client_name\" = \"%s\",\"client_phone\" = \"%s\" WHERE client_id = %d;";
-    private static final String DELETE_QUERY = "DELETE FROM \"client\" WHERE client_id = %d;";
+    private static final String INSERT_QUERY = "INSERTING_CUSTOMER_CLIENT '%s', '%s', '%s', '%s';";
+    private static final String SELECT_QUERY = "SELECT * FROM client WHERE client_id = %d;";
+    private static final String SELECT_ALL_QUERY = "SELECT * FROM client;";
+    private static final String UPDATE_QUERY = "EXEC ALTERANDO_STORE %d, '%s', '%s', '%s'";
+    private static final String DELETE_QUERY = "DELETE FROM client WHERE client_id = %d;";
 
     private static final String CLIENT_ID = "client_id";
-    private static final String CLIENT_DOCUMENT = "client_document";
     private static final String CLIENT_NAME = "client_name";
+    private static final String CLIENT_DOCUMENT = "client_document";
     private static final String CLIENT_PHONE = "client_phone";
+    private static final String CLIENT_BIRTH_DATE = "client_birth_date";
+    private static final String CLIENT_AGE = "client_age";
 
     @Override
     public List<ClientModel> select() {
@@ -57,12 +59,12 @@ public class ClientDAO extends DefaultDAO<ClientModel> {
 
     @Override
     public String buildInsertQuery(ClientModel obj) {
-        return String.format(INSERT_QUERY, obj.getDocument(), obj.getName(), obj.getPhone());
+        return String.format(INSERT_QUERY, obj.getName(), obj.getDocument(), obj.getPhone(), obj.getBirth_date());
     }
 
     @Override
     public String buildUpdateQuery(ClientModel obj) {
-        return String.format(UPDATE_QUERY, obj.getDocument(), obj.getName(), obj.getPhone(), obj.getId());
+        return String.format(UPDATE_QUERY, obj.getId(), obj.getDocument(), obj.getPhone(), obj.getBirth_date(), obj.getName());
     }
 
     @Override
@@ -81,6 +83,8 @@ public class ClientDAO extends DefaultDAO<ClientModel> {
                 client.setDocument(resultSet.getString(CLIENT_DOCUMENT));
                 client.setName(resultSet.getString(CLIENT_NAME));
                 client.setPhone(resultSet.getString(CLIENT_PHONE));
+                client.setBirth_date(resultSet.getString(CLIENT_BIRTH_DATE));
+                client.setAge(resultSet.getInt(CLIENT_AGE));
                 clients.add(client);
             }
         } catch (SQLException e) {
@@ -99,6 +103,8 @@ public class ClientDAO extends DefaultDAO<ClientModel> {
             client.setDocument(resultSet.getString(CLIENT_DOCUMENT));
             client.setName(resultSet.getString(CLIENT_NAME));
             client.setPhone(resultSet.getString(CLIENT_PHONE));
+            client.setBirth_date(resultSet.getString(CLIENT_BIRTH_DATE));
+            client.setAge(resultSet.getInt(CLIENT_AGE));
 
             return client;
         } catch (SQLException e) {

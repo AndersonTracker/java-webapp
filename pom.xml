@@ -68,6 +68,18 @@
       <artifactId>sqlite-jdbc</artifactId>
       <version>3.32.3.2</version>
     </dependency>
+    <!--SQL server Driver-->
+    <dependency>
+      <groupId>com.microsoft.sqlserver</groupId>
+      <artifactId>mssql-jdbc</artifactId>
+      <version>9.2.1.jre11</version>
+    </dependency>
+  
+    <dependency>
+      <groupId>org.bndly.common.service</groupId>
+      <artifactId>org.bndly.common.service.client</artifactId>
+      <version>1.0.2</version>
+    </dependency>
   </dependencies>
 
   <build>

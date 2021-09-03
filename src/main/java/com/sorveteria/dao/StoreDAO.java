@@ -8,12 +8,13 @@ import java.util.List;
 import com.sorveteria.model.StoreModel;
 
 public class StoreDAO extends DefaultDAO<StoreModel> {
+    
+    private static final String INSERT_QUERY = "EXEC INSERTING_STORE '%s', '%s', '%s'";
+    private static final String SELECT_QUERY = "SELECT * FROM store WHERE store_id = %d;";
+    private static final String SELECT_ALL_QUERY = "SELECT * FROM store;";
+    private static final String UPDATE_QUERY = "EXEC ALTERANDO_STORE %d, '%s', '%s', '%s'";
 
-    private static final String INSERT_QUERY = "INSERT INTO \"store\" VALUES(NULL,\"%s\",\"%s\",\"%s\");";
-    private static final String SELECT_QUERY = "SELECT * FROM \"store\" WHERE store_id = %d;";
-    private static final String SELECT_ALL_QUERY = "SELECT * FROM \"store\";";
-    private static final String UPDATE_QUERY = "UPDATE \"store\" SET \"store_name\" = \"%s\", \"store_address\" = \"%s\", \"store_phone\" = \"%s\" WHERE store_id = %d;";
-    private static final String DELETE_QUERY = "DELETE FROM \"store\" WHERE store_id = %d;";
+    private static final String DELETE_QUERY = "DELETE FROM store WHERE store_id = %d;";
 
     private static final String STORE_ID = "store_id";
     private static final String STORE_ADDRESS = "store_address";
@@ -62,7 +63,7 @@ public class StoreDAO extends DefaultDAO<StoreModel> {
 
     @Override
     public String buildUpdateQuery(StoreModel obj) {
-        return String.format(UPDATE_QUERY, obj.getName(), obj.getAddress(), obj.getPhone(), obj.getId());
+        return String.format(UPDATE_QUERY, obj.getId(), obj.getName(), obj.getAddress(), obj.getPhone());
     }
 
     @Override

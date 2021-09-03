@@ -4,7 +4,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 
 public class DatabaseConnection {
-	final String DB_URL = "jdbc:sqlite:C:\\Projetos\\JAVA\\JAVA_API\\database\\sqlitedb.db";
+	//final String DB_URL = "jdbc:sqlserver://DESKTOP-7AV68TG\\SQLEXPRESS;databaseName=Sorveteria2;";
+	final String DB_URL = "jdbc:sqlserver://localhost:1433;databaseName=Sorveteria2;user=admin;password=admin;";
 	// final String USER = "admin";
 	// final String PASSWORD = "C0nnect123";
 
@@ -12,7 +13,7 @@ public class DatabaseConnection {
 
 	public DatabaseConnection() {
 		try {
-			Class.forName("org.sqlite.JDBC");
+			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
 			dbconnection = (Connection) DriverManager.getConnection(DB_URL);
 		} catch (Exception e) {
 			// TODO: handle exception

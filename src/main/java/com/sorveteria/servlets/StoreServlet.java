@@ -15,7 +15,6 @@ import javax.ws.rs.core.MediaType;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sorveteria.dao.StoreDAO;
-import com.sorveteria.exception.DataNotFoundException;
 import com.sorveteria.model.StoreModel;
 
 @Path("/stores")

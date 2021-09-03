@@ -9,16 +9,19 @@ import com.sorveteria.model.OrderModel;
 
 public class OrderDAO extends DefaultDAO<OrderModel> {
 
-    private static final String INSERT_QUERY = "INSERT INTO \"order\" VALUES(NULL,%d,%s,%d);";
-    private static final String SELECT_QUERY = "SELECT * FROM \"order\" WHERE order_id = %d;";
-    private static final String SELECT_ALL_QUERY = "SELECT * FROM \"order\";";
-    private static final String UPDATE_QUERY = "UPDATE \"order\" SET \"employee_id\" = %d,\"order_total_amount\" = %s,\"client_id\" = %d WHERE order_id = %d;";
-    private static final String DELETE_QUERY = "DELETE FROM \"order\" WHERE order_id = %d;";
+    private static final String INSERT_QUERY = "INSERT INTO order_item (employee_id, client_id, ice_cream_id, item_quantity, unity_amount) VALUES (%d, %d, %d, %d, '%s')";
+    private static final String SELECT_QUERY = "SELECT * FROM order_item WHERE order_item_id = %d;";
+    private static final String SELECT_ALL_QUERY = "SELECT * FROM order_item;";
+    private static final String UPDATE_QUERY = "UPDATE order_item SET employee_id = %d, client_id = %d, ice_cream_id = %d, item_quantity = %d, unity_amount = '%s' WHERE order_item_id = %d";
+    private static final String DELETE_QUERY = "DELETE FROM order_item WHERE order_item_id = %d;";
 
-    private static final String ORDER_ID = "order_id";
-    private static final String CLIENT_ID = "client_id";
-    private static final String ORDER_TOTAL_AMOUNT = "order_total_amount";
+    private static final String ORDER_ID = "order_item_id";
     private static final String EMPLOYEE_ID = "employee_id";
+    private static final String CLIENT_ID = "client_id";
+    private static final String PRODUCT_ID = "ice_cream_id";
+    private static final String ITEM_QUANTITY = "item_quantity";
+    private static final String UNIT_AMOUNT = "unity_amount";
+    private static final String TOTAL_AMOUNT = "total_amount";
 
     @Override
     public List<OrderModel> select() {
@@ -57,12 +60,12 @@ public class OrderDAO extends DefaultDAO<OrderModel> {
 
     @Override
     public String buildInsertQuery(OrderModel obj) {
-        return String.format(INSERT_QUERY, obj.getEmployeeId(), String.valueOf(obj.getTotalAmount()).replace(',', '.'), obj.getClientId());
+        return String.format(INSERT_QUERY, obj.getEmployeeId(), obj.getClientId(), obj.getIceCreamId(), obj.getItemQuantity() ,obj.getUnityAmount());
     }
     
     @Override
     public String buildUpdateQuery(OrderModel obj) {
-        return String.format(UPDATE_QUERY, obj.getEmployeeId(), String.valueOf(obj.getTotalAmount()).replace(',', '.'), obj.getClientId(), obj.getId());
+        return String.format(UPDATE_QUERY, obj.getEmployeeId(), obj.getClientId(), obj.getIceCreamId(), obj.getItemQuantity() ,obj.getUnityAmount(), obj.getId());
     }
 
     @Override
@@ -79,8 +82,11 @@ public class OrderDAO extends DefaultDAO<OrderModel> {
 
                 order.setId(resultSet.getInt(ORDER_ID));
                 order.setEmployeeId(resultSet.getInt(EMPLOYEE_ID));
-                order.setTotalAmount(resultSet.getFloat(ORDER_TOTAL_AMOUNT));
                 order.setClientId(resultSet.getInt(CLIENT_ID));
+                order.setIceCreamId(resultSet.getInt(PRODUCT_ID));
+                order.setItemQuantity(resultSet.getInt(ITEM_QUANTITY));
+                order.setUnityAmount(resultSet.getFloat(UNIT_AMOUNT));
+                order.setTotalAmount(resultSet.getFloat(TOTAL_AMOUNT));
                 orders.add(order);
             }
         } catch (SQLException e) {
@@ -97,9 +103,11 @@ public class OrderDAO extends DefaultDAO<OrderModel> {
 
             order.setId(resultSet.getInt(ORDER_ID));
             order.setEmployeeId(resultSet.getInt(EMPLOYEE_ID));
-            order.setTotalAmount(resultSet.getFloat(ORDER_TOTAL_AMOUNT));
             order.setClientId(resultSet.getInt(CLIENT_ID));
-
+            order.setIceCreamId(resultSet.getInt(PRODUCT_ID));
+            order.setItemQuantity(resultSet.getInt(ITEM_QUANTITY));
+            order.setUnityAmount(resultSet.getFloat(UNIT_AMOUNT));
+            order.setTotalAmount(resultSet.getFloat(TOTAL_AMOUNT));
             return order;
         } catch (SQLException e) {
             // TODO Auto-generated catch block

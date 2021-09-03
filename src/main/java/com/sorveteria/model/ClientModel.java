@@ -3,12 +3,30 @@ package com.sorveteria.model;
 public class ClientModel {
 
     private int id;
-    private String document;
     private String name;
+    private String document;
     private String phone;
+    private String birth_date;
+    private int age;
 
     public int getId() {
         return this.id;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public String getBirth_date() {
+        return birth_date;
+    }
+
+    public void setBirth_date(String birth_date) {
+        this.birth_date = birth_date;
     }
 
     public void setId(int id) {
