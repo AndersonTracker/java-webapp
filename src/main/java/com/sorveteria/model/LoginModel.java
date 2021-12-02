@@ -7,9 +7,16 @@ import com.sorveteria.dao.LoginDAO;
 public class LoginModel {
     private String user;
     private String password;
+    private boolean systemLocked;
     
     public String getUser() {
         return user;
+    }
+    public boolean isSystemLocked() {
+        return systemLocked;
+    }
+    public void setSystemLocked(boolean systemLocked) {
+        this.systemLocked = systemLocked;
     }
     public String getPassword() {
         return password;

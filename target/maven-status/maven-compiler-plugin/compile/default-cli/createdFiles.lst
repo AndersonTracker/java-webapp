@@ -29,6 +29,7 @@ com\sorveteria\dao\ProfitDAO.class
 com\sorveteria\model\IceCreamModel.class
 com\sorveteria\servlets\EmployeeServlet.class
 com\sorveteria\dao\DatabaseConnection.class
+com\sorveteria\model\StatusBanckModel.class
 com\sorveteria\dao\LoginDAO.class
 com\sorveteria\model\LoginModel.class
 com\sorveteria\servlets\IceCreamServlet.class
