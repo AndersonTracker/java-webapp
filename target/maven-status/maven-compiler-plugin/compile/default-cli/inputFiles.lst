@@ -4,6 +4,7 @@ c:\Projetos\JAVA\JAVA_API\webapp\src\main\java\com\sorveteria\model\LogModel.jav
 c:\Projetos\JAVA\JAVA_API\webapp\src\main\java\com\sorveteria\dao\OrderDetailDAO.java
 c:\Projetos\JAVA\JAVA_API\webapp\src\main\java\com\sorveteria\dao\ProfitDAO.java
 c:\Projetos\JAVA\JAVA_API\webapp\src\main\java\com\sorveteria\model\IceCreamModel.java
+c:\Projetos\JAVA\JAVA_API\webapp\src\main\java\com\sorveteria\servlets\WebServlet.java
 c:\Projetos\JAVA\JAVA_API\webapp\src\main\java\com\sorveteria\exception\DataNotFoundExceptionMapper.java
 c:\Projetos\JAVA\JAVA_API\webapp\src\main\java\com\sorveteria\servlets\StoreServlet.java
 c:\Projetos\JAVA\JAVA_API\webapp\src\main\java\com\sorveteria\servlets\LogServlet.java
@@ -16,15 +17,18 @@ c:\Projetos\JAVA\JAVA_API\webapp\src\main\java\com\sorveteria\servlets\ClientSer
 c:\Projetos\JAVA\JAVA_API\webapp\src\main\java\com\sorveteria\servlets\DefaultServlet.java
 c:\Projetos\JAVA\JAVA_API\webapp\src\main\java\com\sorveteria\dao\DatabaseConnection.java
 c:\Projetos\JAVA\JAVA_API\webapp\src\main\java\com\sorveteria\dao\StoreDAO.java
+c:\Projetos\JAVA\JAVA_API\webapp\src\main\java\com\sorveteria\servlets\LoginServlet.java
 c:\Projetos\JAVA\JAVA_API\webapp\src\main\java\com\sorveteria\model\ErrorMessage.java
 c:\Projetos\JAVA\JAVA_API\webapp\src\main\java\com\sorveteria\model\StoreModel.java
 c:\Projetos\JAVA\JAVA_API\webapp\src\main\java\com\sorveteria\servlets\ProfitServlet.java
+c:\Projetos\JAVA\JAVA_API\webapp\src\main\java\com\sorveteria\model\LoginModel.java
 c:\Projetos\JAVA\JAVA_API\webapp\src\main\java\com\sorveteria\dao\DefaultDAO.java
 c:\Projetos\JAVA\JAVA_API\webapp\src\main\java\com\sorveteria\dao\OrderDAO.java
 c:\Projetos\JAVA\JAVA_API\webapp\src\main\java\com\sorveteria\filters\CorsFilter.java
 c:\Projetos\JAVA\JAVA_API\webapp\src\main\java\com\sorveteria\exception\DataNotFoundException.java
 c:\Projetos\JAVA\JAVA_API\webapp\src\main\java\com\sorveteria\dao\IceCreamDAO.java
 c:\Projetos\JAVA\JAVA_API\webapp\src\main\java\com\sorveteria\model\ClientModel.java
+c:\Projetos\JAVA\JAVA_API\webapp\src\main\java\com\sorveteria\dao\LoginDAO.java
 c:\Projetos\JAVA\JAVA_API\webapp\src\main\java\com\sorveteria\model\ProfitModel.java
 c:\Projetos\JAVA\JAVA_API\webapp\src\main\java\com\sorveteria\servlets\StoreDetailServlet.java
 c:\Projetos\JAVA\JAVA_API\webapp\src\main\java\com\sorveteria\model\OrderDetailModel.java

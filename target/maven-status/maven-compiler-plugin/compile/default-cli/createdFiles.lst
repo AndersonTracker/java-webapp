@@ -1,5 +1,6 @@
 com\sorveteria\model\ClientModel.class
 com\sorveteria\dao\LogDAO.class
+com\sorveteria\servlets\LoginServlet.class
 com\sorveteria\servlets\StoreServlet.class
 com\sorveteria\servlets\LogServlet.class
 com\sorveteria\servlets\ProfitServlet.class
@@ -18,6 +19,7 @@ com\sorveteria\servlets\ClientServlet.class
 com\sorveteria\dao\OrderDetailDAO.class
 com\sorveteria\model\OrderDetailModel.class
 com\sorveteria\model\OrderModel.class
+com\sorveteria\servlets\WebServlet.class
 com\sorveteria\filters\CorsFilter.class
 com\sorveteria\model\EmployeeModel.class
 com\sorveteria\model\ProfitModel.class
@@ -27,5 +29,7 @@ com\sorveteria\dao\ProfitDAO.class
 com\sorveteria\model\IceCreamModel.class
 com\sorveteria\servlets\EmployeeServlet.class
 com\sorveteria\dao\DatabaseConnection.class
+com\sorveteria\dao\LoginDAO.class
+com\sorveteria\model\LoginModel.class
 com\sorveteria\servlets\IceCreamServlet.class
 com\sorveteria\exception\DataNotFoundException.class

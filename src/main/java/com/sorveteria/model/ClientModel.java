@@ -1,7 +1,9 @@
 package com.sorveteria.model;
 
-public class ClientModel {
+import javax.validation.constraints.NotNull;
 
+public class ClientModel {
+    @NotNull
     private int id;
     private String name;
     private String document;

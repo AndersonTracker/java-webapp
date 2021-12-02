@@ -12,7 +12,7 @@ public class ClientDAO extends DefaultDAO<ClientModel> {
     private static final String INSERT_QUERY = "INSERTING_CUSTOMER_CLIENT '%s', '%s', '%s', '%s';";
     private static final String SELECT_QUERY = "SELECT * FROM client WHERE client_id = %d;";
     private static final String SELECT_ALL_QUERY = "SELECT * FROM client;";
-    private static final String UPDATE_QUERY = "EXEC ALTERANDO_STORE %d, '%s', '%s', '%s'";
+    private static final String UPDATE_QUERY = "EXEC ALTERANDO_CLIENT %d, '%s', '%s', '%s', '%s'";
     private static final String DELETE_QUERY = "DELETE FROM client WHERE client_id = %d;";
 
     private static final String CLIENT_ID = "client_id";
@@ -59,12 +59,18 @@ public class ClientDAO extends DefaultDAO<ClientModel> {
 
     @Override
     public String buildInsertQuery(ClientModel obj) {
-        return String.format(INSERT_QUERY, obj.getName(), obj.getDocument(), obj.getPhone(), obj.getBirth_date());
+        if (obj.getName() != null && obj.getDocument().length() == 14 && obj.getBirth_date() != null){
+            return String.format(INSERT_QUERY, obj.getName(), obj.getDocument(), obj.getPhone(), obj.getBirth_date());
+        }
+        return null;
     }
 
     @Override
     public String buildUpdateQuery(ClientModel obj) {
-        return String.format(UPDATE_QUERY, obj.getId(), obj.getDocument(), obj.getPhone(), obj.getBirth_date(), obj.getName());
+        if (obj.getName() != null && obj.getDocument().length() > 14 && obj.getBirth_date() != null){
+        return String.format(UPDATE_QUERY, obj.getId(), obj.getName(), obj.getDocument(), obj.getPhone(), obj.getBirth_date());
+        }
+        return null;
     }
 
     @Override
