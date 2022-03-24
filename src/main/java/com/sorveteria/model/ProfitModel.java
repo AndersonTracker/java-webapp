@@ -2,14 +2,10 @@ package com.sorveteria.model;
 
 public class ProfitModel {
 
-    private int id;
     private int idOrders;
     private Float amountTotalProfit;
     private String profitDate;
 
-    public int getId() {
-        return id;
-    }
     public String getProfitDate() {
         return profitDate;
     }
@@ -28,10 +24,4 @@ public class ProfitModel {
     public void setIdOrders(int idOrders) {
         this.idOrders = idOrders;
     }
-    public void setId(int id) {
-        this.id = id;
-    }
-
-   
-
 }

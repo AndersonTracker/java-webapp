@@ -11,6 +11,7 @@ public class OrderDetailDAO extends DefaultDAO {
     
     private static final String SELECT_ALL_QUERY = "SELECT * FROM VW_ALL_ORDERS";
    
+    private static final String ORDER_ITEM_ID = "order_item_id";
     private static final String EMPLOYEE_NAME = "employee_name";
     private static final String CLIENT_NAME = "client_name";
     private static final String ICE_CREAM_NAME = "ice_cream_name";
@@ -59,6 +60,7 @@ public class OrderDetailDAO extends DefaultDAO {
             while (resultSet.next()) {
                 OrderDetailModel orderDetail = new OrderDetailModel();
 
+                orderDetail.setOrder_item_id(resultSet.getInt(ORDER_ITEM_ID));
                 orderDetail.setEmployee_name(resultSet.getString(EMPLOYEE_NAME));
                 orderDetail.setClient_name(resultSet.getString(CLIENT_NAME));
                 orderDetail.setIce_cream_name(resultSet.getString(ICE_CREAM_NAME));

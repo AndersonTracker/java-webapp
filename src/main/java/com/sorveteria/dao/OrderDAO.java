@@ -9,10 +9,10 @@ import com.sorveteria.model.OrderModel;
 
 public class OrderDAO extends DefaultDAO<OrderModel> {
 
-    private static final String INSERT_QUERY = "INSERT INTO order_item (employee_id, client_id, ice_cream_id, item_quantity, unity_amount) VALUES (%d, %d, %d, %d, '%s')";
+    private static final String INSERT_QUERY = "INSERT INTO order_item (employee_id, client_id, ice_cream_id, item_quantity) VALUES (%d, %d, %d, %d)";
     private static final String SELECT_QUERY = "SELECT * FROM order_item WHERE order_item_id = %d;";
     private static final String SELECT_ALL_QUERY = "SELECT * FROM order_item;";
-    private static final String UPDATE_QUERY = "UPDATE order_item SET employee_id = %d, client_id = %d, ice_cream_id = %d, item_quantity = %d, unity_amount = '%s' WHERE order_item_id = %d";
+    private static final String UPDATE_QUERY = "UPDATE order_item SET employee_id = %d, client_id = %d, ice_cream_id = %d, item_quantity = %d WHERE order_item_id = %d";
     private static final String DELETE_QUERY = "DELETE FROM order_item WHERE order_item_id = %d;";
 
     private static final String ORDER_ID = "order_item_id";
@@ -60,12 +60,12 @@ public class OrderDAO extends DefaultDAO<OrderModel> {
 
     @Override
     public String buildInsertQuery(OrderModel obj) {
-        return String.format(INSERT_QUERY, obj.getEmployeeId(), obj.getClientId(), obj.getIceCreamId(), obj.getItemQuantity() ,obj.getUnityAmount());
+        return String.format(INSERT_QUERY, obj.getEmployeeId(), obj.getClientId(), obj.getIceCreamId(), obj.getItemQuantity());
     }
     
     @Override
     public String buildUpdateQuery(OrderModel obj) {
-        return String.format(UPDATE_QUERY, obj.getEmployeeId(), obj.getClientId(), obj.getIceCreamId(), obj.getItemQuantity() ,obj.getUnityAmount(), obj.getId());
+        return String.format(UPDATE_QUERY, obj.getEmployeeId(), obj.getClientId(), obj.getIceCreamId(), obj.getItemQuantity(), obj.getId());
     }
 
     @Override

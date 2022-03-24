@@ -59,18 +59,12 @@ public class ClientDAO extends DefaultDAO<ClientModel> {
 
     @Override
     public String buildInsertQuery(ClientModel obj) {
-        if (obj.getName() != null && obj.getDocument().length() == 14 && obj.getBirth_date() != null){
-            return String.format(INSERT_QUERY, obj.getName(), obj.getDocument(), obj.getPhone(), obj.getBirth_date());
-        }
-        return null;
+        return String.format(INSERT_QUERY, obj.getName(), obj.getDocument(), obj.getPhone(), obj.getBirth_date());
     }
 
     @Override
     public String buildUpdateQuery(ClientModel obj) {
-        if (obj.getName() != null && obj.getDocument().length() > 14 && obj.getBirth_date() != null){
-        return String.format(UPDATE_QUERY, obj.getId(), obj.getName(), obj.getDocument(), obj.getPhone(), obj.getBirth_date());
-        }
-        return null;
+       return String.format(UPDATE_QUERY, obj.getId(), obj.getName(), obj.getDocument(), obj.getPhone(), obj.getBirth_date());
     }
 
     @Override

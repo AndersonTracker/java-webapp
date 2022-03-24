@@ -1,4 +1,5 @@
 com\sorveteria\model\ClientModel.class
+com\sorveteria\servlets\IceCreamAddEstoqueServlet.class
 com\sorveteria\dao\LogDAO.class
 com\sorveteria\servlets\LoginServlet.class
 com\sorveteria\servlets\StoreServlet.class
@@ -22,6 +23,7 @@ com\sorveteria\model\OrderModel.class
 com\sorveteria\servlets\WebServlet.class
 com\sorveteria\filters\CorsFilter.class
 com\sorveteria\model\EmployeeModel.class
+com\sorveteria\dao\IceCreamAddEstoqueDAO.class
 com\sorveteria\model\ProfitModel.class
 com\sorveteria\servlets\StoreDetailServlet.class
 com\sorveteria\servlets\DefaultServlet.class

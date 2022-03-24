@@ -7,9 +7,20 @@ public class IceCreamModel {
     private String desc;
     private float price;
     private int quantity;
+    private int quantityComprada;
 
     public int getId() {
         return this.id;
+    }
+
+    public int getQuantityComprada() {
+        int value = getQuantity();
+        value = value + quantityComprada;
+        return value;
+    }
+
+    public void setQuantityComprada(int quantityComprada) {
+        this.quantityComprada = quantityComprada;
     }
 
     public String getName() {

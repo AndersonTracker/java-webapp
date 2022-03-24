@@ -27,6 +27,8 @@ public class LoginDAO {
     } catch (Exception e) {
         // TODO: handle exception
         e.printStackTrace();
+    }finally {
+        connection.closeDBConnection();
     }
     return status;
     }
@@ -39,6 +41,8 @@ public class LoginDAO {
     } catch (Exception e) {
         // TODO: handle exception
         e.printStackTrace();
+    }finally {
+        connection.closeDBConnection();
     }
 }
 

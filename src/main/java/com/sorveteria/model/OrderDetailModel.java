@@ -2,6 +2,7 @@ package com.sorveteria.model;
 
 public class OrderDetailModel {
    
+    private int order_item_id;
     private String employee_name;
     private String client_name;
     private String ice_cream_name;
@@ -11,6 +12,12 @@ public class OrderDetailModel {
 
     public String getEmployee_name() {
         return employee_name;
+    }
+    public int getOrder_item_id() {
+        return order_item_id;
+    }
+    public void setOrder_item_id(int order_item_id) {
+        this.order_item_id = order_item_id;
     }
     public float getTotal_amount() {
         return total_amount;

@@ -11,7 +11,6 @@ public class ProfitDAO extends DefaultDAO {
 
     private static final String SELECT_ALL_QUERY = "SELECT * FROM profit";
 
-    private static final String PROFIT_ID = "profit_id";
     private static final String PROFIT_IDORDERS = "id_orders";
     private static final String PROFIT_TOTAL_AMOUNT = "amount_total_profit";
     private static final String PROFIT_DATE = "profit_date";
@@ -51,8 +50,7 @@ public class ProfitDAO extends DefaultDAO {
         try {
             while (resultSet.next()) {
                 ProfitModel profit = new ProfitModel();
-
-                profit.setId(resultSet.getInt(PROFIT_ID));
+                
                 profit.setIdOrders(resultSet.getInt(PROFIT_IDORDERS));
                 profit.setAmountTotalProfit(resultSet.getFloat(PROFIT_TOTAL_AMOUNT));
                 profit.setProfitDate(resultSet.getString(PROFIT_DATE));

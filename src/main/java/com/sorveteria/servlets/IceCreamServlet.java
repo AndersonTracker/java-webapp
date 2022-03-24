@@ -15,7 +15,6 @@ import javax.ws.rs.core.MediaType;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sorveteria.dao.IceCreamDAO;
-import com.sorveteria.exception.DataNotFoundException;
 import com.sorveteria.model.IceCreamModel;
 
 @Path("/ice-cream")
@@ -67,7 +66,6 @@ public class IceCreamServlet implements DefaultServlet<IceCreamModel> {
             //TODO tratar exception e retornar mensagem de erro 
             e.printStackTrace();
         }
-
     }
 
     @DELETE

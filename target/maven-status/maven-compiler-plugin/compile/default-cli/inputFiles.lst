@@ -17,6 +17,7 @@ c:\Projetos\JAVA\JAVA_API\webapp\src\main\java\com\sorveteria\servlets\IceCreamS
 c:\Projetos\JAVA\JAVA_API\webapp\src\main\java\com\sorveteria\servlets\ClientServlet.java
 c:\Projetos\JAVA\JAVA_API\webapp\src\main\java\com\sorveteria\servlets\DefaultServlet.java
 c:\Projetos\JAVA\JAVA_API\webapp\src\main\java\com\sorveteria\dao\DatabaseConnection.java
+c:\Projetos\JAVA\JAVA_API\webapp\src\main\java\com\sorveteria\servlets\IceCreamAddEstoqueServlet.java
 c:\Projetos\JAVA\JAVA_API\webapp\src\main\java\com\sorveteria\dao\StoreDAO.java
 c:\Projetos\JAVA\JAVA_API\webapp\src\main\java\com\sorveteria\servlets\LoginServlet.java
 c:\Projetos\JAVA\JAVA_API\webapp\src\main\java\com\sorveteria\model\ErrorMessage.java
@@ -29,6 +30,7 @@ c:\Projetos\JAVA\JAVA_API\webapp\src\main\java\com\sorveteria\filters\CorsFilter
 c:\Projetos\JAVA\JAVA_API\webapp\src\main\java\com\sorveteria\exception\DataNotFoundException.java
 c:\Projetos\JAVA\JAVA_API\webapp\src\main\java\com\sorveteria\dao\IceCreamDAO.java
 c:\Projetos\JAVA\JAVA_API\webapp\src\main\java\com\sorveteria\model\ClientModel.java
+c:\Projetos\JAVA\JAVA_API\webapp\src\main\java\com\sorveteria\dao\IceCreamAddEstoqueDAO.java
 c:\Projetos\JAVA\JAVA_API\webapp\src\main\java\com\sorveteria\dao\LoginDAO.java
 c:\Projetos\JAVA\JAVA_API\webapp\src\main\java\com\sorveteria\model\ProfitModel.java
 c:\Projetos\JAVA\JAVA_API\webapp\src\main\java\com\sorveteria\servlets\StoreDetailServlet.java
