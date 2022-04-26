@@ -12,6 +12,7 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sorveteria.dao.LoginDAO;
 import com.sorveteria.model.LoginModel;
+import com.sorveteria.model.SistemaModal;
 import com.sorveteria.model.StatusBanckModel;
 
 @Path("/login")
@@ -45,7 +46,7 @@ public class LoginServlet {
     
         @GET
         @Consumes(MediaType.APPLICATION_JSON)
-        public StatusBanckModel doGet(String body) throws JsonMappingException, JsonProcessingException {
+        public SistemaModal doGet(String body) throws JsonMappingException, JsonProcessingException {
             try {
                 return (new LoginDAO()).StatusBanck();
            } catch (Exception e) {

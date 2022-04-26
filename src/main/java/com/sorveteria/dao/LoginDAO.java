@@ -5,20 +5,21 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import com.sorveteria.model.LoginModel;
+import com.sorveteria.model.SistemaModal;
 import com.sorveteria.model.StatusBanckModel;
 
 public class LoginDAO {
 
-    public static final String SELECT_QUERY = "SELECT * from Usuarios where users = '%s' and passwords = '%s' and systemLocked = 'true'";
-    public static final String SEARCH_STATUS = "SELECT systemLocked from Usuarios where systemLocked = 'true'";
-    public static final String BLOCK = "UPDATE Usuarios SET systemLocked = 'false'";
+    public static final String SELECT_QUERY = "SELECT * from Usuarios where users = '%s' and passwords = '%s'";
+    public static final String SEARCH_STATUS = "SELECT * FROM Sistema";
+    public static final String BLOCK = "UPDATE Sistema SET systemLocked = 'false'";
 
     private static final String USERS = "users";
     private static final String PASSWORDS = "passwords";
     private static final String SYSTEMLOCKED = "systemLocked";
 
-    public StatusBanckModel StatusBanck() {
-        StatusBanckModel status = null;
+    public SistemaModal StatusBanck() {
+        SistemaModal status = null;
         DatabaseConnection connection = new DatabaseConnection();
     try {
         Statement statement = (Statement) connection.getDbconnection().createStatement();
@@ -91,11 +92,11 @@ public class LoginDAO {
         return logins;
     }
 
-    public StatusBanckModel ConsultStatus(ResultSet resultSet) {
-        StatusBanckModel status = new StatusBanckModel();
+    public SistemaModal ConsultStatus(ResultSet resultSet) {
+        SistemaModal status = new SistemaModal();
         try {
             while (resultSet.next()) {
-            StatusBanckModel statu = new StatusBanckModel();
+                SistemaModal statu = new SistemaModal();
             statu.setSystemLocked(resultSet.getBoolean(SYSTEMLOCKED));
             status = statu;
             }
