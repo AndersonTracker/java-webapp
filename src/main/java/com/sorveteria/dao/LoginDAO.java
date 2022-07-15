@@ -6,7 +6,6 @@ import java.sql.SQLException;
 
 import com.sorveteria.model.LoginModel;
 import com.sorveteria.model.SistemaModal;
-import com.sorveteria.model.StatusBanckModel;
 
 public class LoginDAO {
 

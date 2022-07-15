@@ -9,7 +9,7 @@ import com.sorveteria.model.OrderModel;
 
 public class OrderDAO extends DefaultDAO<OrderModel> {
 
-    private static final String INSERT_QUERY = "INSERT INTO order_item (employee_id, client_id, ice_cream_id, item_quantity) VALUES (%d, %d, %d, %d)";
+    private static final String INSERT_QUERY = "EXEC INSERTING_ORDER %d, %d, %d, %d";
     private static final String SELECT_QUERY = "SELECT * FROM order_item WHERE order_item_id = %d;";
     private static final String SELECT_ALL_QUERY = "SELECT * FROM order_item;";
     private static final String UPDATE_QUERY = "UPDATE order_item SET employee_id = %d, client_id = %d, ice_cream_id = %d, item_quantity = %d WHERE order_item_id = %d";

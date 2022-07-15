@@ -9,7 +9,7 @@ import com.sorveteria.model.LogModel;
 
 public class LogDAO extends DefaultDAO {
 
-    private static final String SELECT_ALL_QUERY = "SELECT * FROM log_relat";
+    private static final String SELECT_ALL_QUERY = "SELECT * FROM log_relat ORDER BY log_relat_id DESC";
 
     private static final String LOG_RELAT_ID = "log_relat_id";
     private static final String LOG_RELAT_DESC = "log_relat_desc";
