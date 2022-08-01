@@ -28,17 +28,18 @@ public class LogServlet implements DefaultServlet<LogModel> {
         return Logs;
 
     }
-
+    
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
-    public void doPost(String body) {
-		ObjectMapper objectMapper = new ObjectMapper();
+    public void doPost(String body) throws Exception {
+        System.out.println(body);
+        ObjectMapper objectMapper = new ObjectMapper();
         try {
             LogModel log = objectMapper.readValue(body, LogModel.class);
             new LogDAO().insert(log);
         } catch (Exception e) {
             //TODO tratar exception e retornar mensagem de erro 
-            e.printStackTrace();
+            throw new Exception("nova", e);
         }
     }
 

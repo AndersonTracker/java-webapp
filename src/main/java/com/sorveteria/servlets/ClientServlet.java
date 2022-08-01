@@ -42,14 +42,14 @@ public class ClientServlet implements DefaultServlet<ClientModel> {
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
-    public void doPost(String body) {
+    public void doPost(String body) throws Exception {
 		ObjectMapper objectMapper = new ObjectMapper();
         try {
             ClientModel client = objectMapper.readValue(body, ClientModel.class);
             new ClientDAO().insert(client);
         } catch (Exception e) {
             //TODO tratar exception e retornar mensagem de erro 
-            e.printStackTrace();
+            throw new Exception("nova", e);
         }
     }
 

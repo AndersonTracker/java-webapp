@@ -40,12 +40,12 @@ public class IceCreamDAO extends DefaultDAO<IceCreamModel> {
     }
 
     @Override
-    public boolean insert(IceCreamModel obj) {
+    public boolean insert(IceCreamModel obj) throws Exception {
         return super.insert(obj);
     }
 
     @Override
-    public boolean update(IceCreamModel obj) {
+    public boolean update(IceCreamModel obj) throws Exception {
         return super.update(obj);
     }
 

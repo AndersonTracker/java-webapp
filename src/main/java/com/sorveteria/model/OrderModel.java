@@ -4,7 +4,7 @@ public class OrderModel {
     
     private int id;
     private int employeeId;
-    private int clientId;
+    private String clientName;
     private int iceCreamId;
     private int itemQuantity;
     private float unityAmount;
@@ -58,12 +58,11 @@ public class OrderModel {
         this.employeeId = employeeId;
     }
 
-    public int getClientId() {
-        return this.clientId;
+    public String getClientName() {
+        return clientName;
     }
 
-    public void setClientId(int clientId) {
-        this.clientId = clientId;
+    public void setClientName(String clientName) {
+        this.clientName = clientName;
     }
-
 }

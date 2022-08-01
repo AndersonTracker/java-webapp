@@ -9,7 +9,7 @@ import com.sorveteria.model.SistemaModal;
 
 public class LoginDAO {
 
-    public static final String SELECT_QUERY = "SELECT * from Usuarios where users = '%s' and passwords = '%s'";
+    public static final String SELECT_QUERY = "SELECT * from Usuarios where users = '%s' and passwords = '%s';";
     public static final String SEARCH_STATUS = "SELECT * FROM Sistema";
     public static final String BLOCK = "UPDATE Sistema SET systemLocked = 'false'";
 
@@ -79,10 +79,10 @@ public class LoginDAO {
         try {
             while (resultSet.next()) {
                 LoginModel login = new LoginModel();
-            login.setUser(resultSet.getString(USERS));
-            login.setPassword(resultSet.getString(PASSWORDS));
-            login.setSystemLocked(resultSet.getBoolean(SYSTEMLOCKED));
-            logins = login;
+                login.setUser(resultSet.getString(USERS));
+                login.setPassword(resultSet.getString(PASSWORDS));
+                login.setSystemLocked(resultSet.getBoolean(SYSTEMLOCKED));
+                logins = login;
             }
         } catch (SQLException e) {
             // TODO Auto-generated catch block
@@ -96,8 +96,8 @@ public class LoginDAO {
         try {
             while (resultSet.next()) {
                 SistemaModal statu = new SistemaModal();
-            statu.setSystemLocked(resultSet.getBoolean(SYSTEMLOCKED));
-            status = statu;
+                statu.setSystemLocked(resultSet.getBoolean(SYSTEMLOCKED));
+                status = statu;
             }
         } catch (SQLException e) {
             // TODO Auto-generated catch block

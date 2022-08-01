@@ -42,28 +42,28 @@ public class OrderServlet implements DefaultServlet<OrderModel> {
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
-    public void doPost(String body) {
+    public void doPost(String body) throws Exception {
 		ObjectMapper objectMapper = new ObjectMapper();
         try {
             OrderModel order = objectMapper.readValue(body, OrderModel.class);
             new OrderDAO().insert(order);
         } catch (Exception e) {
             //TODO tratar exception e retornar mensagem de erro 
-            e.printStackTrace();
+            throw new Exception("nova", e);
         }
     }
 
     @Path("/{id}")
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
-    public void doPut(@PathParam("id") int id, String body) {
+    public void doPut(@PathParam("id") int id, String body) throws Exception {
 		ObjectMapper objectMapper = new ObjectMapper();
         try {
             OrderModel order = objectMapper.readValue(body, OrderModel.class);
             new OrderDAO().update(order);
         } catch (Exception e) {
             //TODO tratar exception e retornar mensagem de erro 
-            e.printStackTrace();
+            throw new Exception("nova", e);
         }
 
     }

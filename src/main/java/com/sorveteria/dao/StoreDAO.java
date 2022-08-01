@@ -32,12 +32,12 @@ public class StoreDAO extends DefaultDAO<StoreModel> {
     }
 
     @Override
-    public boolean insert(StoreModel obj) {
+    public boolean insert(StoreModel obj) throws Exception {
         return super.insert(obj);
     }
 
     @Override
-    public boolean update(StoreModel obj) {
+    public boolean update(StoreModel obj) throws Exception {
         return super.update(obj);
     }
 

@@ -46,7 +46,7 @@ public abstract class DefaultDAO<T> {
         return obj;
     }
 
-    public boolean insert(T obj) {
+    public boolean insert(T obj) throws Exception {
         boolean returnValue = FAILED;
 
         DatabaseConnection connection = new DatabaseConnection();
@@ -56,7 +56,7 @@ public abstract class DefaultDAO<T> {
             returnValue = SUCCEED;
         } catch (Exception e) {
             // TODO: handle exception
-            e.printStackTrace();
+            throw new Exception("nova", e);
         } finally {
             connection.closeDBConnection();
         }
@@ -64,7 +64,7 @@ public abstract class DefaultDAO<T> {
         return returnValue;
     };
 
-    public boolean update(T obj) {
+    public boolean update(T obj) throws Exception {
         boolean returnValue = FAILED;
 
         DatabaseConnection connection = new DatabaseConnection();
@@ -74,7 +74,7 @@ public abstract class DefaultDAO<T> {
             returnValue = SUCCEED;
         } catch (Exception e) {
             // TODO: handle exception
-            e.printStackTrace();
+            throw new Exception("nova", e); 
         } finally {
             connection.closeDBConnection();
         }

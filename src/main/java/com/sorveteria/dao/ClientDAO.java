@@ -33,12 +33,12 @@ public class ClientDAO extends DefaultDAO<ClientModel> {
     }
 
     @Override
-    public boolean insert(ClientModel obj) {
+    public boolean insert(ClientModel obj) throws Exception {
         return super.insert(obj);
     }
 
     @Override
-    public boolean update(ClientModel obj) {
+    public boolean update(ClientModel obj) throws Exception {
         return super.update(obj);
     }
 

@@ -42,28 +42,28 @@ public class EmployeeServlet implements DefaultServlet<EmployeeModel> {
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
-    public void doPost(String body) {
+    public void doPost(String body) throws Exception {
 		ObjectMapper objectMapper = new ObjectMapper();
         try {
             EmployeeModel employee = objectMapper.readValue(body, EmployeeModel.class);
             new EmployeeDAO().insert(employee);
         } catch (Exception e) {
             //TODO tratar exception e retornar mensagem de erro 
-            e.printStackTrace();
+            throw new Exception("nova", e);
         }
     }
     
     @PUT
     @Path("/{id}")
     @Consumes(MediaType.APPLICATION_JSON)
-    public void doPut(@PathParam("id") int id, String body) {
+    public void doPut(@PathParam("id") int id, String body) throws Exception {
 		ObjectMapper objectMapper = new ObjectMapper();
         try {
             EmployeeModel employee = objectMapper.readValue(body, EmployeeModel.class);
             new EmployeeDAO().update(employee);
         } catch (Exception e) {
             //TODO tratar exception e retornar mensagem de erro 
-            e.printStackTrace();
+            throw new Exception("nova", e);
         }
 
     }

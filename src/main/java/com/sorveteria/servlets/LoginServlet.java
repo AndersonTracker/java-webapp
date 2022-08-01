@@ -13,7 +13,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sorveteria.dao.LoginDAO;
 import com.sorveteria.model.LoginModel;
 import com.sorveteria.model.SistemaModal;
-import com.sorveteria.model.StatusBanckModel;
 
 @Path("/login")
 public class LoginServlet {

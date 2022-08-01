@@ -33,12 +33,12 @@ public class EmployeeDAO extends DefaultDAO<EmployeeModel> {
     }
 
     @Override
-    public boolean insert(EmployeeModel obj) {
+    public boolean insert(EmployeeModel obj) throws Exception {
         return super.insert(obj);
     }
 
     @Override
-    public boolean update(EmployeeModel obj) {
+    public boolean update(EmployeeModel obj) throws Exception {
         return super.update(obj);
     }
 

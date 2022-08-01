@@ -2,6 +2,7 @@
 package com.sorveteria.servlets;
 
 import javax.ws.rs.Consumes;
+import javax.ws.rs.GET;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -14,6 +15,16 @@ import com.sorveteria.model.IceCreamModel;
 @Path("/ice-cream/addEstoque")
 public class IceCreamAddEstoqueServlet {
 
+    @Path("/{id}")
+    @GET
+    public IceCreamModel doGet(@PathParam("id") int id) {
+        IceCreamModel iceCream = new IceCreamAddEstoqueDAO().select(id);
+        if(iceCream == null) {
+            //throw new DataNotFoundException("Can't find client with id " + id);
+        }
+        return iceCream;
+        }
+		
     @Path("/{id}")
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
