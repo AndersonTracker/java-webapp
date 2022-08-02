@@ -1,14 +1,19 @@
 package com.sorveteria.model;
 
-import java.util.List;
-
 import com.sorveteria.dao.LoginDAO;
 
 public class LoginModel {
     private String user;
     private String password;
+    private String telefone;
     private boolean systemLocked;
     
+    public String getTelefone() {
+        return telefone;
+    }
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
     public String getUser() {
         return user;
     }

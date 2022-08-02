@@ -15,6 +15,7 @@ public class LoginDAO {
 
     private static final String USERS = "users";
     private static final String PASSWORDS = "passwords";
+    private static final String TELEFONE = "telefone";
     private static final String SYSTEMLOCKED = "systemLocked";
 
     public SistemaModal StatusBanck() {
@@ -81,6 +82,7 @@ public class LoginDAO {
                 LoginModel login = new LoginModel();
                 login.setUser(resultSet.getString(USERS));
                 login.setPassword(resultSet.getString(PASSWORDS));
+                login.setTelefone(resultSet.getString(TELEFONE));
                 login.setSystemLocked(resultSet.getBoolean(SYSTEMLOCKED));
                 logins = login;
             }
@@ -105,4 +107,5 @@ public class LoginDAO {
         }
         return status;
     }
+
 }

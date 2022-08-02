@@ -43,15 +43,15 @@ public class LoginServlet {
 
     }
     
-        @GET
-        @Consumes(MediaType.APPLICATION_JSON)
-        public SistemaModal doGet(String body) throws JsonMappingException, JsonProcessingException {
-            try {
-                return (new LoginDAO()).StatusBanck();
-           } catch (Exception e) {
-            //TODO tratar exception e retornar mensagem de erro 
-            e.printStackTrace();
-        }
-            return null;
-        }
+    @GET
+    @Consumes(MediaType.APPLICATION_JSON)
+    public SistemaModal doGet(String body) throws JsonMappingException, JsonProcessingException {
+        try {
+            return (new LoginDAO()).StatusBanck();
+        } catch (Exception e) {
+        //TODO tratar exception e retornar mensagem de erro 
+        e.printStackTrace();
+    }
+        return null;
+    }
 }
