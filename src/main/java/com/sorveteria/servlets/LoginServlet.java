@@ -32,10 +32,11 @@ public class LoginServlet {
 
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
-    public void doPut() {
+    public void doPut(String body) {
         try {
-            boolean BlockValue = false;
-            new LoginDAO().block(BlockValue);
+            ObjectMapper objectMapper = new ObjectMapper();
+            SistemaModal sistem = objectMapper.readValue(body, SistemaModal.class);
+            new LoginDAO().block(sistem);
         } catch (Exception e) {
             //TODO tratar exception e retornar mensagem de erro 
             e.printStackTrace();

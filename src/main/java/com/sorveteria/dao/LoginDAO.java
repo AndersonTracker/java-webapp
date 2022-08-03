@@ -11,7 +11,7 @@ public class LoginDAO {
 
     public static final String SELECT_QUERY = "SELECT * from Usuarios where users = '%s' and passwords = '%s';";
     public static final String SEARCH_STATUS = "SELECT * FROM Sistema";
-    public static final String BLOCK = "UPDATE Sistema SET systemLocked = 'false'";
+    public static final String BLOCK = "UPDATE Sistema SET systemLocked = '%s'";
 
     private static final String USERS = "users";
     private static final String PASSWORDS = "passwords";
@@ -34,11 +34,11 @@ public class LoginDAO {
     return status;
     }
 
-    public void block(boolean blockValue) {
+    public void block(SistemaModal blockValueIs) {
         DatabaseConnection connection = new DatabaseConnection();
     try {
         Statement statement = (Statement) connection.getDbconnection().createStatement();
-        statement.executeQuery(systemLock(blockValue));
+        statement.execute(systemLock(blockValueIs));
     } catch (Exception e) {
         // TODO: handle exception
         e.printStackTrace();
@@ -67,8 +67,8 @@ public class LoginDAO {
         return String.format(SELECT_QUERY, obj.getUser(), obj.getPassword());
     }
 
-    public String systemLock(boolean blockValue) {
-        return String.format(BLOCK);
+    public String systemLock(SistemaModal obj) {
+        return String.format(BLOCK, obj.isSystemLocked());
     }
 
     private String Status() {
