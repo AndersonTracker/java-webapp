@@ -2,6 +2,7 @@ package com.sorveteria.servlets;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.core.MediaType;
 
@@ -21,6 +22,19 @@ public class CadastreUserServlet {
         } catch (Exception e) {
             //TODO tratar exception e retornar mensagem de erro 
             throw new Exception("nova", e);
+        }
+    }
+    
+    @PUT
+    @Consumes(MediaType.APPLICATION_JSON)
+    public void doPut(String body) {
+		ObjectMapper objectMapper = new ObjectMapper();
+        try {
+            LoginModel login = objectMapper.readValue(body, LoginModel.class);
+            new CreateNewUserDAO().updateSenha(login);
+        } catch (Exception e) {
+            //TODO tratar exception e retornar mensagem de erro 
+            e.printStackTrace();
         }
     }
 }

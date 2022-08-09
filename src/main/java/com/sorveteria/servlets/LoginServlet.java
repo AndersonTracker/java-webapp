@@ -22,7 +22,13 @@ public class LoginServlet {
         try {
                 ObjectMapper objectMapper = new ObjectMapper();
                 LoginModel login = objectMapper.readValue(body, LoginModel.class);
-                return (new LoginDAO()).validate(login);
+                System.out.println(login.getUser());
+                System.out.println(login.getPassword());
+                if(login.getPassword() == null && login.getUser() != null){
+                    return (new LoginDAO()).validateTelefone(login);
+                }else{
+                    return (new LoginDAO()).validate(login);
+                }
        } catch (Exception e) {
         //TODO tratar exception e retornar mensagem de erro 
         e.printStackTrace();
@@ -41,7 +47,6 @@ public class LoginServlet {
             //TODO tratar exception e retornar mensagem de erro 
             e.printStackTrace();
         }
-
     }
     
     @GET

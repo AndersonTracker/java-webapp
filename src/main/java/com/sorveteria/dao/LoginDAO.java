@@ -10,6 +10,7 @@ import com.sorveteria.model.SistemaModal;
 public class LoginDAO {
 
     public static final String SELECT_QUERY = "SELECT * from Usuarios where users = '%s' and passwords = '%s';";
+    public static final String SELECT_QUERY_ALL = "SELECT * from Usuarios where users = '%s';";
     public static final String SEARCH_STATUS = "SELECT * FROM Sistema";
     public static final String BLOCK = "UPDATE Sistema SET systemLocked = '%s'";
 
@@ -62,6 +63,26 @@ public class LoginDAO {
         }
         return login;
     };
+
+    public LoginModel validateTelefone(LoginModel obj) {
+        LoginModel login = null;
+        DatabaseConnection connection = new DatabaseConnection();
+        try {
+            Statement statement = (Statement) connection.getDbconnection().createStatement();
+            ResultSet resultSet = statement.executeQuery(buildSelectQueryAll(obj));
+            login = buildResultObject(resultSet);
+        } catch (Exception e) {
+            // TODO: handle exception
+            e.printStackTrace();
+        } finally {
+            connection.closeDBConnection();
+        }
+        return login;
+    };
+
+    public String buildSelectQueryAll(LoginModel obj) {
+        return String.format(SELECT_QUERY_ALL, obj.getUser());
+    }
 
     public String buildSelectQuery(LoginModel obj) {
         return String.format(SELECT_QUERY, obj.getUser(), obj.getPassword());
